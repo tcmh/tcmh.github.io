@@ -23,3 +23,9 @@ html, body {
   footer{
   	bottom: 0;
   }
+
+  #logo {
+    color: #0080FF;
+    font-size: 35pt;
+    text-decoration: none;
+  }

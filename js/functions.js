@@ -2,11 +2,16 @@ $(document).ready(function() {
 	$(".searchInput").on("keyup", function() {
 		searchTable();
 	});
+
+	$(".searchSelect").on("change", function() {
+		searchTable();
+	});
 });
 
 function searchTable() {
 	var productName = $("#productName").val().toLowerCase();
-	var category = $("#category").val().toLowerCase();
+	// var category = $("#category").val().toLowerCase();
+	var category = $("#category").find(":selected").text().toLowerCase();
 	var priceMin = $("#priceMin").val();
 	var priceMax = $("#priceMax").val();
 
@@ -18,12 +23,14 @@ function searchTable() {
 		}
 	});
 
-	$("td.category").each(function() {
-		if (!$(this).text().toLowerCase().includes(category)) {
-			$(this).parent().hide();
-		}
-	});
-
+	if (category !== "select category") {
+		$("td.category").each(function() {
+			if (!$(this).text().toLowerCase().includes(category)) {
+				$(this).parent().hide();
+			}
+		});
+	}
+	
 	//!isNan checks if a string is a number
 	// + converts a string to a number
 
